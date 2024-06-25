@@ -1,0 +1,5 @@
+@media (max-width: 576px) {
+    .form-floating {
+      width: 100%;
+    }
+  }

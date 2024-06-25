@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD System</title>
+  <link href="CSS/bootstrap.min.css" rel="stylesheet">
+  <link href="CSS/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+  <div class="p-4 rounded my-4 bg-light shadow-sm">
+    <h1 class="text-center py-2 mb-4 bg-info text-white rounded-pill">
+      CRUD SYSTEM
+    </h1>
+
+    <!-- Product Form -->
+    <form>
+      <!-- Product Name -->
+      <div class="form-floating mb-3">
+        <input
+          oninput="validation(this,'msgName')"
+          type="text"
+          class="form-control"
+          id="productName"
+          placeholder="Product Name"
+        />
+        <label for="productName">Product Name</label>
+        <p id="msgName" class="alert alert-danger text-danger d-none">Invalid Pattern (e.g., iPhone)</p>
+      </div>
+
+      <!-- Product Price -->
+      <div class="form-floating mb-3">
+        <input
+          oninput="validation(this,'msgPrice')"
+          type="number"
+          class="form-control"
+          id="productPrice"
+          placeholder="Product Price"
+        />
+        <label for="productPrice">Product Price</label>
+        <p id="msgPrice" class="alert alert-danger text-danger d-none">Invalid Pattern (e.g., 123456...)</p>
+      </div>
+
+      <!-- Product Category -->
+      <div class="form-floating mb-3">
+        <input
+          oninput="validation(this,'msgCategory')"
+          list="category"
+          type="text"
+          class="form-control"
+          id="productCategory"
+          placeholder="Product Category"
+        />
+        <label for="productCategory">Product Category</label>
+        <datalist id="category">
+          <option value="TV"></option>
+          <option value="Mobile"></option>
+          <option value="Screens"></option>
+          <option value="Electronic"></option>
+        </datalist>
+        <p id="msgCategory" class="alert alert-danger text-danger d-none">Invalid Pattern (e.g., TV)</p>
+      </div>
+
+      <!-- Product Description -->
+      <div class="form-floating mb-3">
+        <textarea
+          oninput="validation(this,'msgDesc')"
+          class="form-control"
+          id="productDescription"
+          style="height: 100px"
+          placeholder="Product Description"
+        ></textarea>
+        <label for="productDescription">Product Description</label>
+        <p id="msgDesc" class="alert alert-danger text-danger d-none">Invalid Pattern (e.g., material, color)</p>
+      </div>
+
+      <!-- Product Image -->
+      <div class="form-floating mb-3">
+        <input
+          oninput="validation(this,'msgIMG')"
+          type="file"
+          class="form-control"
+          id="productImage"
+          placeholder="Product Image"
+        />
+        <label for="productImage">Product Image</label>
+        <p id="msgIMG" class="alert alert-danger text-danger d-none">Invalid Pattern (e.g., 1.png)</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-4">
+        <button
+          type="button"
+          onclick="addItem()"
+          id="btnAdd"
+          class="btn btn-primary me-2"
+        >
+          Add Product
+        </button>
+        <button
+          type="button"
+          onclick="updateItem()"
+          id="btnUpdate"
+          class="btn btn-info d-none"
+        >
+          Update Product
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Product List -->
+  <div class="p-4">
+    <div class="mb-3">
+      <input
+        type="search"
+        id="searchInput"
+        oninput="searchItem()"
+        class="form-control"
+        placeholder="Search By Name..."
+      />
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-info text-center">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="bdy" class="text-center">
+          <!-- Table body content will be dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
